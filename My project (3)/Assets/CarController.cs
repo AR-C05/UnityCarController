@@ -7,12 +7,14 @@ public class CarController : MonoBehaviour
     public float rotationSpeed = 100f;
     public float brakeForce = 30f; // Increase brake force
 
+    private float baseSpeed;
     private bool isBoosting = false;
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        baseSpeed = speed;
     }
 
     private void Update()
@@ -43,7 +45,7 @@ public class CarController : MonoBehaviour
         else if (!boostInput && isBoosting)
         {
             isBoosting = false;
-            speed = speed; // Reset the speed back to default
+            speed = baseSpeed; // Reset the speed back to default
         }
 
         // Apply brake if brake input is detected
